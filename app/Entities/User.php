@@ -2,7 +2,6 @@
 
 namespace App\Entities;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -28,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }
