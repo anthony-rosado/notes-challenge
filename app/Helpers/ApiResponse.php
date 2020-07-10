@@ -15,6 +15,11 @@ abstract class ApiResponse
 
     public static function failed($errors, $message)
     {
-        return response()->json(compact('errors', 'message'), Response::HTTP_OK);
+        return response()->json(compact('errors', 'message'), Response::HTTP_BAD_REQUEST);
+    }
+
+    public static function created($data, $message = null)
+    {
+        return response()->json(compact('data', 'message'), Response::HTTP_CREATED);
     }
 }
