@@ -23,5 +23,11 @@ Route::group(['namespace' => 'Api'], function () {
     Route::middleware('auth:api')->group(function () {
         Route::get('groups', 'GroupController@index');
         Route::post('groups/{id}/join', 'GroupController@join');
+
+        Route::middleware('group-member')->group(function () {
+            Route::get('notes', 'NoteController@index');
+            Route::get('notes/{id}', 'NoteController@show');
+            Route::post('notes', 'NoteController@store');
+        });
     });
 });
