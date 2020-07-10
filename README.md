@@ -43,6 +43,24 @@ Then set the configuration for the Passport package
 php artisan passport:install
 ```
 
+## Testing
+
+In the ``.env.testing`` configure an account to send notifications when notes created.
+
+Create a ``database.slqite`` in database directory and execute the following commands
+
+```
+php artisan migrate:fresh --seed --env=testing
+php artisan passport:install --force --env=testing
+```
+
+Now to run the tests
+```
+php artisan test
+```
+
+* Note: For notifications run this commands ``php artisan queue:work``
+
 # Demo in Postman
 
 Check the API in:
