@@ -11,8 +11,12 @@ class RegisterController extends Controller
 {
     public function __invoke(RegisterRequest $request)
     {
-        User::create($request->validated());
+        /**@var User $user*/
+        $user = User::create($request->validated());
+        $accessToken = $user->createToken('login')->accessToken;
 
-        return ApiResponse::created(null, __('messages.user.registered'));
+        return ApiResponse::created([
+            'access_token' => $accessToken,
+        ], __('messages.user.registered'));
     }
 }
