@@ -3,7 +3,8 @@
 return [
 
     'user' => [
-        'registered' => 'User was registered successfully.',
+        'registered' => 'User registered successfully.',
+        'joined' => 'User has joined (:group-name).',
     ],
 
 ];

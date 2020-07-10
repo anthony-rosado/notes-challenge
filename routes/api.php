@@ -19,4 +19,9 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('register', 'RegisterController');
         Route::post('login', 'LoginController');
     });
+
+    Route::middleware('auth:api')->group(function () {
+        Route::get('groups', 'GroupController@index');
+        Route::post('groups/{id}/join', 'GroupController@join');
+    });
 });
