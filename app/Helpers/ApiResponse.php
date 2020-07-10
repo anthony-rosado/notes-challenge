@@ -22,4 +22,9 @@ abstract class ApiResponse
     {
         return response()->json(compact('data', 'message'), Response::HTTP_CREATED);
     }
+
+    public static function noContent()
+    {
+        return response()->json(null, Response::HTTP_NO_CONTENT);
+    }
 }
